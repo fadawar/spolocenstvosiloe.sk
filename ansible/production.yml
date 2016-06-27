@@ -1,12 +1,9 @@
 ---
 - name: Create application on production
-  hosts: webservers
-  remote_user: fadawar
+  hosts: production
+  remote_user: root
   vars:
     - update_apt_cache: yes
-  vars_files:
-    - env_vars/base.yml
-    - env_vars/azure.yml
   roles:
     - base
     - server

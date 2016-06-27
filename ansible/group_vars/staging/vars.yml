@@ -18,7 +18,7 @@ gunicorn_max_requests: 0
 # PostgreSQL
 db_name: "{{ application_name }}_db"
 db_user: "{{ application_name }}"
-db_password: nE3PcX9eCdh9NZDQUdTs
+db_password: "{{ vault_db_password }}"
 
 # Django
 django_static_path: "{{ nginx_static_dir_path }}"

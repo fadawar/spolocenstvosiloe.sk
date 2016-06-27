@@ -90,3 +90,4 @@ ENV/
 
 .idea/
 .vagrant/
+.ansible-vault-password.txt

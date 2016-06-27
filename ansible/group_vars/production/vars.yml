@@ -1,0 +1,29 @@
+---
+
+virtualenv_path: /app/venv
+application_path_server: /application/
+application_path_latest: "{{ application_path_server }}latest/"
+application_path_latest_file: "{{ application_path_server }}latest" # There can not be '/' at the end when creating symbolic link
+
+# Nginx
+nginx_log_path: /app/logs
+nginx_static_dir_path: "{{ application_path_latest }}static/"
+
+# Gunicorn
+gunicorn_user: siloe
+gunicorn_group: siloe
+gunicorn_num_workers: 5
+gunicorn_max_requests: 0
+
+# PostgreSQL
+db_name: "{{ application_name }}_db"
+db_user: "{{ application_name }}"
+db_password: "{{ vault_db_password }}"
+
+# Django
+django_static_path: "{{ nginx_static_dir_path }}"
+django_debug: "False"
+django_allowed_hosts: "['spolocenstvosiloe.sk', '185.122.56.160']"
+
+# SSL
+enable_ssl: yes

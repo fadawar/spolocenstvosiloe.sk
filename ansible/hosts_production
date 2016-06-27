@@ -1,2 +1,2 @@
-[webservers]
+[production]
 185.122.56.160 ansible_user=root
