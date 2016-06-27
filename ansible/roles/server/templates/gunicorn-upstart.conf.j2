@@ -1,0 +1,8 @@
+description "Gunicorn server service for {{ application_name }}"
+
+start on net-device-up
+stop on shutdown
+
+respawn
+
+exec {{ virtualenv_path }}/bin/gunicorn_start

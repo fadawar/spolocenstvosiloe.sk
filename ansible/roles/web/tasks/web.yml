@@ -1,0 +1,61 @@
+---
+
+- name: Create directory for application files
+  become: yes
+  become_user: root
+  file: path="{{ application_path_server }}{{ ansible_date_time.iso8601 }}" state=directory mode=0777
+  tags: deploy
+
+- name: Copy application files to newly created directory on server
+  copy:
+    src: "{{ application_sources_dir }}{{ application_name }}"
+    dest: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}"
+    mode: 0744
+
+- name: Install pip packages
+  pip: requirements="{{ application_path_server }}{{ ansible_date_time.iso8601 }}/{{ application_name }}/requirements.txt"
+       executable=pip3.4
+       virtualenv={{ virtualenv_path }}
+       virtualenv_command=pyvenv-3.4
+
+- name: Create Django settings file
+  template: src=django_settings.j2
+            dest="{{ application_path_server }}{{ ansible_date_time.iso8601 }}/{{ application_name }}/{{ application_name }}/settings.py"
+            owner={{ gunicorn_user }}
+            group={{ gunicorn_group }}
+            mode=0755
+
+- name: Copy application static files
+  copy:
+    src: "{{ application_sources_dir }}static"
+    dest: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}"
+    mode: 0644
+
+- name: Copy blog files
+  copy:
+    src: "{{ application_sources_dir }}blog/output/"
+    dest: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}/blog/"
+    mode: 0644
+  tags: blog
+
+- name: Run Django migrations
+  django_manage:
+    command: migrate
+    app_path: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}/{{ application_name }}/"
+    virtualenv: "{{ virtualenv_path }}"
+
+- name: Load Django fixtures
+  django_manage:
+    command: loaddata
+    fixtures: mainapp/fixtures/users.json log_platform/fixtures/tokens.json
+    app_path: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}/{{ application_name }}/"
+    virtualenv: "{{ virtualenv_path }}"
+
+- name: Create (or change) symbolic link to newest version of application
+  file:
+    src: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}"
+    dest: "{{ application_path_latest_file }}"
+    state: link
+    mode: 0755
+  notify:
+    - restart gunicorn

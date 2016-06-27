@@ -1,0 +1,14 @@
+- name: restart gunicorn
+  become: yes
+  become_user: root
+  service:  name=gunicorn-{{ application_name }} state=restarted
+
+- name: restart nginx
+  become: yes
+  become_user: root
+  service: name=nginx state=restarted
+
+- name: reload nginx
+  become: yes
+  become_user: root
+  service: name=nginx state=reloaded

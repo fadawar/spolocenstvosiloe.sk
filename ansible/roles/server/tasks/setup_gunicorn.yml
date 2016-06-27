@@ -1,0 +1,28 @@
+---
+
+- name: Set chmod for virtualenv directory
+  file: path="{{ virtualenv_path }}" mode=0755
+
+- name: Create directory for sock file for gunicorn
+  file: path={{ virtualenv_path }}/run state=directory mode=0755
+
+- name: Create the Gunicorn script file
+  template: src=gunicorn_start.j2
+            dest={{ virtualenv_path }}/bin/gunicorn_start
+            owner={{ gunicorn_user }}
+            group={{ gunicorn_group }}
+            mode=0755
+            backup=yes
+
+- name: Create gunicorn service init script
+  become: yes
+  become_user: root
+  template: src=gunicorn-upstart.conf.j2
+            dest=/etc/init/gunicorn-{{ application_name }}.conf
+  notify:
+    - restart gunicorn
+
+- name: Make sure gunicorn is running
+  become: yes
+  become_user: root
+  service: name=gunicorn-{{ application_name }} state=running

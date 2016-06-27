@@ -1,0 +1,14 @@
+---
+
+- name: Install pyvenv
+  become: yes
+  become_user: root
+  apt: name={{ item }} update_cache={{ update_apt_cache }} state=installed
+  with_items:
+    - python3.4-venv
+
+- name: Create pyvenv
+  pip: name=pip
+       virtualenv={{ virtualenv_path }}
+       virtualenv_command=pyvenv-3.4
+       virtualenv_python=python3.4

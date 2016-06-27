@@ -1,0 +1,9 @@
+---
+
+application_name: spinehero
+application_sources_dir: ../src/
+
+# Nginx
+nginx_server_name: "{{ application_name }}.com"
+nginx_access_log_file: "{{ nginx_log_path }}/nginx-access.log"
+nginx_error_log_file: "{{ nginx_log_path }}/nginx-error.log"

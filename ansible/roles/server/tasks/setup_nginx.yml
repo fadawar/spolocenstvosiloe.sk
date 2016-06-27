@@ -1,0 +1,52 @@
+---
+
+- name: Add PPA for Nginx
+  become: yes
+  become_user: root
+  apt_repository: repo='ppa:nginx/development'
+
+- name: Install Nginx
+  become: yes
+  become_user: root
+  apt: name=nginx update_cache={{ update_apt_cache }} state=latest
+  tags: packages
+
+- name: Create the Nginx configuration file
+  become: yes
+  become_user: root
+  template: src=nginx_site_config.j2
+            dest=/etc/nginx/sites-available/{{ application_name }}
+            backup=yes
+  notify:
+    - reload nginx
+
+- name: Create log directory for nginx
+  file: path={{ nginx_log_path }} state=directory mode=0777
+
+- name: Create log files for nginx
+  file: path={{ item }} mode=0666 state=touch
+  with_items:
+    - "{{ nginx_access_log_file }}"
+    - "{{ nginx_error_log_file }}"
+
+- name: Ensure that the default site is disabled
+  become: yes
+  become_user: root
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  notify:
+    - restart nginx
+
+- name: Ensure that the application site is enabled
+  become: yes
+  become_user: root
+  file:
+    src: /etc/nginx/sites-available/{{ application_name }}
+    dest: /etc/nginx/sites-enabled/{{ application_name }}
+    state: link
+  notify:
+    - restart nginx
+
+- name: Ensure Nginx service is running
+  become: yes
+  become_user: root
+  service: name=nginx state=running enabled=yes

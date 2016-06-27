@@ -1,0 +1,13 @@
+---
+- name: Create application on vagrant
+  hosts: vagrant
+  remote_user: vagrant
+  vars:
+    - update_apt_cache: no
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/vagrant.yml
+  roles:
+    - base
+    - server
+#    - web

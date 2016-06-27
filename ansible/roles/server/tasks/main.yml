@@ -1,0 +1,13 @@
+---
+
+- include: setup_nginx.yml
+  tags: nginx
+
+- include: setup_virtualenv.yml
+  tags: virtualenv
+
+- include: setup_gunicorn.yml
+  tags: deploy
+
+- include: setup_db.yml
+  tags: db
