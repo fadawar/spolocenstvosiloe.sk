@@ -4,7 +4,7 @@ spolocenstvosiloe.sk
 Provisioning
 ------------
 We use Ansible. Secret information are encrypted with ansible-vault and password file must
-be named `.ansible-vault-password.txt``.
+be named ``.ansible-vault-password.txt``.
 
 #### Provisioning production
 ```ansible-playbook -i ansible/hosts_production ansible/production.yml```
