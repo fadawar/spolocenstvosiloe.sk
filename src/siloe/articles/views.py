@@ -1,6 +1,8 @@
 from django.shortcuts import render
 
+from articles.models import Article
 
-# Create your views here.
-def home_page():
-    pass
+
+def home_page(request):
+    articles = Article.objects.all()
+    return render(request, 'articles/home.html', {'articles': articles})
