@@ -106,7 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'sk-sk'
 
-TIME_ZONE = 'UTC+01:00'
+TIME_ZONE = 'Europe/Bratislava'
 
 USE_I18N = True
 
