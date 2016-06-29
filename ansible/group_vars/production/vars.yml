@@ -24,6 +24,7 @@ db_password: "{{ vault_db_password }}"
 django_static_path: "{{ nginx_static_dir_path }}"
 django_debug: "False"
 django_allowed_hosts: "['spolocenstvosiloe.sk', '185.122.56.160']"
+django_secret_key: "{{ vault_django_secret_key }}"
 
 # SSL
 enable_ssl: yes

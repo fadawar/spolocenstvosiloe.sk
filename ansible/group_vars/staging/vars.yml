@@ -24,6 +24,7 @@ db_password: "{{ vault_db_password }}"
 django_static_path: "{{ nginx_static_dir_path }}"
 django_debug: "True"
 django_allowed_hosts: "['*', ]"
+django_secret_key: "{{ vault_django_secret_key }}"
 
 # SSL
 enable_ssl: no
