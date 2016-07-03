@@ -23,6 +23,18 @@ class HomePageTest(TestCase):
 
         self.assertContains(response, 'Great title for article')
         self.assertContains(response, 'This is my story')
+        self.assertContains(response, 'href="/articles/1/"')
+
+    def test_can_show_single_article(self):
+        article = Article.objects.create()
+        article.title = 'Great title for article'
+        article.content = 'This is my story'
+        article.save()
+
+        response = self.client.get('/articles/1/')
+
+        self.assertContains(response, 'Great title for article')
+        self.assertContains(response, 'This is my story')
 
 
 class VideoArticleTest(TestCase):

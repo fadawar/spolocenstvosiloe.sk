@@ -21,5 +21,6 @@ from articles import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^articles/(\d+)/$', views.view_article, name='view_article'),
     url(r'^$', views.home_page, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
