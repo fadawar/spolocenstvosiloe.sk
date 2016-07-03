@@ -13,7 +13,7 @@ var p = require('gulp-load-plugins')({
 
 var dir = {
     source: 'assets',
-    build: 'static',
+    build: 'siloe/siloe/static',
     django: 'siloe',    // dir where all Django apps live
     temp: 'temp'
 };
@@ -65,7 +65,7 @@ gulp.task('styles', function() {
 
 // kopirovanie html
 gulp.task('markup', function() {
-    return gulp.src([dir.django + '/**/templates/**/*.htmlgulp'])
+    return gulp.src([dir.django + '/**/templates/**/*.html-gulp'])
         .pipe(p.plumber({ errorHandler: logErrorHandler }))
         .pipe(p.htmlmin({
             collapseWhitespace: true,
@@ -102,6 +102,6 @@ gulp.task('images-watch', ['images'], browserSync.reload);
 gulp.task('default', ['styles', 'scripts', 'markup', 'images', 'browser-sync'], function() {
     gulp.watch([dir.source + '/sass/**/*.scss'], ['styles']);
     gulp.watch([dir.source + '/js/**/*.js'], ['scripts-watch']);
-    gulp.watch([dir.django + '/**/templates/**/*.htmlgulp'], ['markup-watch']);
+    gulp.watch([dir.django + '/**/templates/**/*.html-gulp'], ['markup-watch']);
     gulp.watch([dir.source + '/img/**/*.*'], ['images-watch']);
 });

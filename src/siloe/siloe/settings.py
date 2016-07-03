@@ -56,7 +56,7 @@ ROOT_URLCONF = 'siloe.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'siloe/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,6 +122,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/vagrant/src/static/'
+STATICFILES_DIRS = [
+    "/vagrant/src/siloe/siloe/static/",
+]
 
 MEDIA_ROOT = '/home/vagrant/media/'
 MEDIA_URL = '/media/'

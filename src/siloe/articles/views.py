@@ -5,4 +5,4 @@ from articles.models import Article
 
 def home_page(request):
     articles = Article.objects.all()
-    return render(request, 'articles/home.html', {'articles': articles})
+    return render(request, 'articles/home.html-gulp', {'articles': articles})

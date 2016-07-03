@@ -19,11 +19,14 @@
     "bootswatch-dist": "flatly"
   },
   "overrides": {
-      "bootswatch-dist": {
-          "main": [
-            "css/bootstrap.min.css",
-            "js/bootstrap.min.js"
-          ]
-      }
+    "bootswatch-dist": {
+      "main": [
+        "css/bootstrap.min.css",
+        "js/bootstrap.min.js"
+      ]
+    },
+    "jquery": {
+      "ignore": true
+    }
   }
 }

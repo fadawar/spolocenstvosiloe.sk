@@ -3,12 +3,24 @@ spolocenstvosiloe.sk
 
 Development
 -----------
-You need: nodejs, npm, bower, gulp
+You need: vagrant, ansible, nodejs, npm, bower, gulp
+
+### How to start develop
+1. `./start_develop.sh`
+2. `cd src/`
+3. `npm update`
+4. `bower update`
+5. `gulp`
+
+### Structure of Django application
+`/src/static/` - files from `collectstatic` command
+`/src/siloe/static/` - static files for whole site
+`/src/siloe/templates/` - base templates for whole site
 
 Provisioning
 ------------
 We use Ansible. Secret information are encrypted with ansible-vault and password file must
-be named ``.ansible-vault-password.txt``.
+be named `.ansible-vault-password.txt`.
 
 #### Provisioning production
 ```ansible-playbook -i ansible/hosts_production ansible/production.yml```
