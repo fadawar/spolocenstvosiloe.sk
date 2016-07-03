@@ -14,7 +14,9 @@ You need: vagrant, ansible, nodejs, npm, bower, gulp
 
 ### Structure of Django application
 `/src/static/` - files from `collectstatic` command
+
 `/src/siloe/static/` - static files for whole site
+
 `/src/siloe/templates/` - base templates for whole site
 
 Provisioning

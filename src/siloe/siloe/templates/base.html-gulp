@@ -8,7 +8,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>{% block title %}Spoločensvo Siloe{% endblock %}</title>
 
-    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
     <link href="{% static "bundle.min.css" %}" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -22,7 +22,39 @@
     {% include "navigation.html" %}
 
     <div class="container">
-      {% block content %}{% endblock %}
+      <div class="row">
+        <div class="col-md-9">
+          {% block content %}{% endblock %}
+        </div>
+        <div class="col-md-3">
+          <div class="row">
+            <div class="col-sm-12">
+              <form class="form" role="search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Hľadať">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">
+                      <i class="fa fa-search fa-lg" aria-hidden="true"></i>
+                    </button>
+                  </span>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="panel panel-primary">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Služba</h3>
+                </div>
+                <div class="panel-body">Chvály</div>
+                <div class="panel-body">Termíny</div>
+                <div class="panel-body">Mapa</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
