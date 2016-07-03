@@ -1,6 +1,10 @@
 spolocenstvosiloe.sk
 ====================
 
+Development
+-----------
+You need: nodejs, npm, bower, gulp
+
 Provisioning
 ------------
 We use Ansible. Secret information are encrypted with ansible-vault and password file must

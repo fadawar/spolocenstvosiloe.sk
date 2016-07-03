@@ -1,0 +1,29 @@
+{
+  "name": "spolocenstvosiloe.sk",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "fadawar <fadawar@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/fadawar/spolocenstvosiloe.sk",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootswatch-dist": "flatly"
+  },
+  "overrides": {
+      "bootswatch-dist": {
+          "main": [
+            "css/bootstrap.min.css",
+            "js/bootstrap.min.js"
+          ]
+      }
+  }
+}

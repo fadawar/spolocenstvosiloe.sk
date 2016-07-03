@@ -91,3 +91,5 @@ ENV/
 .idea/
 .vagrant/
 .ansible-vault-password.txt
+src/bower_components/
+src/node_modules/
