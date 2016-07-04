@@ -41,18 +41,6 @@
               </form>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="panel panel-primary">
-                <div class="panel-heading">
-                  <h3 class="panel-title">Služba</h3>
-                </div>
-                <div class="panel-body">Chvály</div>
-                <div class="panel-body">Termíny</div>
-                <div class="panel-body">Mapa</div>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

@@ -5,5 +5,10 @@
         <span class="label label-default">{{ tag.name }}</span>
       </a>
     {% endfor %}
+    {% for tag in article.videoarticle.tags.all %}
+      <a href="{% url "view_articles_with_tag" tag.id %}">
+        <span class="label label-default">{{ tag.name }}</span>
+      </a>
+    {% endfor %}
   </div>
 </div>

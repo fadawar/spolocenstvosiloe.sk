@@ -78,9 +78,19 @@ class TagsInArticleTest(TestCase):
         self.assertContains(response, 'tag2')
         self.assertContains(response, 'tag3')
 
+    def test_video_article_has_tags(self):
+        article = VideoArticle.objects.create()
+        article.tags.add("tag1")
+        article.save()
+
+        response = self.client.get('/articles/1/')
+
+        self.assertContains(response, 'tag1')
+
     def test_can_filter_articles_via_tags(self):
         a1 = Article.objects.create(title="First title")
-        a1.tags.add("tag1", "tag2")
+        a1.tags.add("tag1")
+        a1.tags.add("tag2")
         a2 = Article.objects.create(title="Second title")
         a2.tags.add("tag1")
 
