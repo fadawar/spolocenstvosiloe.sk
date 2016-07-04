@@ -15,7 +15,7 @@ var dir = {
     source: 'assets',
     build: 'siloe/siloe/static',
     django: 'siloe',    // dir where all Django apps live
-    temp: 'temp'
+    temp: 'assets/temp'
 };
 
 var logErrorHandler = function (err) {
@@ -49,6 +49,7 @@ gulp.task('scripts', function() {
 gulp.task('styles', function() {
     return gulp.src(mainBowerFiles('**/*.css'))
         .pipe(p.plumber({ errorHandler: logErrorHandler }))
+        .pipe(p.addSrc(dir.temp + '/css/*'))
         .pipe(p.addSrc(dir.source + '/sass/*.scss'))
         .pipe(p.order(['bower_components/**/*', '*.*', 'main.scss'], {base: '.'}))
         .pipe(p.sourcemaps.init())
@@ -84,6 +85,22 @@ gulp.task('images', function() {
         .pipe(gulp.dest(dir.build + '/img'));
 });
 
+// Copy images from mediaelement.js
+gulp.task('mediaelement-images', function() {
+    return gulp.src('bower_components/mediaelement/build/*.{png,svg,jpg,gif}')
+        .pipe(p.imagemin({progressive: true}))
+        .pipe(gulp.dest(dir.build + '/img/mediaelement/'));
+});
+
+// Styles mediaelement.js - adjust url to images
+gulp.task('mediaelement-styles', function() {
+    return gulp.src('bower_components/mediaelement/build/mediaelementplayer.css')
+        .pipe(p.cssUrlAdjuster({
+            prepend: '/static/img/mediaelement/'
+        }))
+        .pipe(gulp.dest(dir.temp + '/css'));
+});
+
 
 // Static Server from browser-sync
 gulp.task('browser-sync', function() {
@@ -99,7 +116,8 @@ gulp.task('images-watch', ['images'], browserSync.reload);
 
 
 // predvolena uloha
-gulp.task('default', ['styles', 'scripts', 'markup', 'images', 'browser-sync'], function() {
+gulp.task('default', ['mediaelement-styles', 'mediaelement-images', 'styles', 'scripts', 'markup', 'images',
+                      'browser-sync'], function() {
     gulp.watch([dir.source + '/sass/**/*.scss'], ['styles']);
     gulp.watch([dir.source + '/js/**/*.js'], ['scripts-watch']);
     gulp.watch([dir.django + '/**/templates/**/*.html-gulp'], ['markup-watch']);

@@ -16,13 +16,19 @@
     "tests"
   ],
   "dependencies": {
-    "bootswatch-dist": "flatly"
+    "bootswatch-dist": "flatly",
+    "mediaelement": "^2.21.2"
   },
   "overrides": {
     "bootswatch-dist": {
       "main": [
         "css/bootstrap.min.css",
         "js/bootstrap.min.js"
+      ]
+    },
+    "mediaelement": {
+      "main": [
+        "./build/mediaelement-and-player.js"
       ]
     },
     "jquery": {
