@@ -11,3 +11,8 @@ def home_page(request):
 def view_article(request, article_id):
     article = Article.objects.get(id=article_id)
     return render(request, 'articles/article.html', {'article': article})
+
+
+def view_articles_with_tag(request, tag_id):
+    articles = Article.objects.filter(tags=tag_id)
+    return render(request, 'articles/home.html', {'articles': articles})
