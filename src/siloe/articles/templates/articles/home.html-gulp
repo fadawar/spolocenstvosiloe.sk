@@ -11,5 +11,12 @@
         <track src="{{ MEDIA_URL }}{{ article.videoarticle.subtitles.name }}">
       </video>
     {% endif %}
+    <div class="row">
+      <div class="col-sm-12">
+        {% for tag in article.tags.all %}
+          <span class="label label-default">{{ tag.name }}</span>
+        {% endfor %}
+      </div>
+    </div>
   {% endfor %}
 {% endblock %}
