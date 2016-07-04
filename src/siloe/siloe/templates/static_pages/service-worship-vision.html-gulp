@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Vízia chvál{% endblock %}
+
+{% block content %}
+  <h1>Vízia chvál</h1>
+
+  <p>
+    Svätopisci nás skrze Sväté písmo opakovane vyzývajú, aby sme chválili a uctievali Boha. Stále dookola na nás
+    apelujú, aby sme na Boha nezabúdali a vzdali mu potrebnú úctu. Robia to azda preto, že by inak Boha nemal kto
+    chváliť? Nie. Chváliť Boha prináša osoh najmä nám. Najlepšie o tom hovorí svätý Pavol v
+    <a href="http://dkc.kbs.sk/dkc.php?in=Rim1,18" target="_blank" title="Biblický citát">1. kapitole listu Rimanom</a>
+    , kde opisuje dôsledky toho, že ľudia prestali chváliť Boha a uctievať jeho meno.
+  </p>
+
+  <p>
+    Preto sme sa ako spoločenstvo rozhodli, že my chceme byť tými, ktorí budú uctievať Boha nie len svojimi životmi,
+    ale aj svojimi perami. Zároveň chceme pozvať každého, kto si ctí Boha, aby sa pridal k nám a pripojil svoj hlas k
+    modlitbe chvály.
+  </p>
+
+  <p>
+    Tieto chvály budú oslavou Boha a zároveň aj našou modlitbou za zjednotenie našej farnosti a
+    dekanátu. Vieme, že naša cirkev nie je dokonalá a v mnohých veciach my veriaci nie sme jednotní. Ten Zlý priniesol
+    medzi nás rôzne spory a nejednotu. Už sme sa pokúšali prelomiť túto nejednotu naším vlastným ľudským úsilím, ale
+    neuspeli sme. Pochopili sme, že je veľmi ťažké sa zjednotiť na ľudskej úrovni. Preto chceme pozvať vás všetkých,
+    ktorí čítate túto správu, aby ste sa zjednotili s nami v modlitbe, v chvále Boha. Myslím, že nech budú medzi nami
+    veriacimi akékoľvek rozdiely či nezhody v názoroch, vždy nás bude spájať Boh, ktorý je naším otcom. Zahoďme preto
+    všetky predsudky a poďme mu spoločne vzdať chválu a česť aká mu prináleží. Poďme my, jeho deti, predstúpiť pred
+    jeho tvár a dovoliť mu, aby nás, hoci sme rozdielni, zjednotil vo svojom svätom mene, aby sme mohli prinášať
+    dobré ovocie. Ovocie jednoty, nie ovocie rozdelenia.
+  </p>
+
+  <p>
+    Aj sám Ježiš nám ukazuje aká je pre nás jednota dôležitá, keď o ňu prosí nebeského otca vo svojej veľkňazskej
+    modlitbe: „Nech sú tak dokonale jedno, aby svet spoznal, že si ma ty poslal a že ich miluješ tak, ako miluješ mňa.“
+    <a href="http://dkc.kbs.sk/dkc.php?in=Jn17,22-23" target="_blank" title="Biblický citát">(Jn 17, 23)</a>
+  </p>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Mapa{% endblock %}
+
+{% block content %}
+  <h1>Mapa k miestam, kde sa odohráva naša služba</h1>
+
+  <iframe src="http://maps.google.com/maps/ms?ie=UTF8&amp;hl=sk&amp;oe=UTF8&amp;msa=0&amp;msid=203107316221998588643.0004ad3868aa80bd9d8b0&amp;t=h&amp;source=embed&amp;ll=48.529729,19.446187&amp;spn=0.00341,0.006866&amp;z=17&amp;output=embed" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" height="480" width="640"></iframe>
+
+{% endblock %}

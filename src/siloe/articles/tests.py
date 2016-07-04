@@ -59,7 +59,7 @@ class VideoArticleTest(TestCase):
         video_article.subtitles = SimpleUploadedFile(upload_file.name, upload_file.read())
         video_article.save()
 
-        response = self.client.get('/')
+        response = self.client.get('/articles/1/')
 
         self.assertContains(response, 'My nice title')
         self.assertContains(response, 'My nice content')
