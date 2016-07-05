@@ -12,3 +12,8 @@ class Article(models.Model):
 class VideoArticle(Article):
     video_url = models.URLField(max_length=255, default="")
     subtitles = models.FileField(upload_to="uploads/%Y/%m/%d/", default="")
+
+
+class ServiceArticle(Article):
+    poster = models.FileField(upload_to="uploads/%Y/%m/%d/", default="")
+    audio_url = models.URLField(max_length=255, default="")

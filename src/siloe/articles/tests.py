@@ -1,12 +1,12 @@
 import os
 
+import datetime
+from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import resolve
 from django.test import TestCase
 
-from taggit.models import Tag
-
-from articles.models import Article, VideoArticle
+from articles.models import Article, VideoArticle, ServiceArticle
 from articles.views import home_page
 
 
@@ -49,7 +49,7 @@ class HomePageTest(TestCase):
 
 
 class VideoArticleTest(TestCase):
-    def test_root_show_also_video_articles(self):
+    def test_video_articles_show_every_field(self):
         video_article = VideoArticle.objects.create()
         video_article.title = 'My nice title'
         video_article.content = 'My nice content'
@@ -109,3 +109,21 @@ class TagsInArticleTest(TestCase):
         response = self.client.get('/articles/1/')
 
         self.assertContains(response, 'href="/articles/tags/1/"')
+
+
+class ServiceArticleTest(TestCase):
+    def test_service_article_show_every_field(self):
+        article = ServiceArticle.objects.create(title="My title", content="My content")
+        article.audio_url = 'https://www.mixcloud.com/fadawar/pavol-g%C3%A1bor%C3%ADk-o-modlitbe-chv%C3%A1l/'
+        directory = os.path.dirname(os.path.realpath(__file__))
+        upload_file = open(directory + '/apps.py', 'rb')
+        article.poster = SimpleUploadedFile(upload_file.name, upload_file.read())
+        article.save()
+
+        response = self.client.get('/articles/1/')
+
+        self.assertContains(response, 'My title')
+        self.assertContains(response, 'My content')
+        self.assertContains(response, 'https://www.mixcloud.com/fadawar/pavol-g%C3%A1bor%C3%ADk-o-modlitbe-chv%C3%A1l/')
+        upload_path = datetime.date.today().strftime("uploads/%Y/%m/%d/")
+        self.assertContains(response, settings.MEDIA_URL + upload_path)
