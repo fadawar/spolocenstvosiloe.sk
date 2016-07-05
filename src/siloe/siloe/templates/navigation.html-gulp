@@ -13,24 +13,25 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
 {#            <li class="active"><a href="#">Home</a></li>#}
-            <li><a href="/about/">O nás</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                 aria-expanded="false">Služba <span class="caret"></span></a>
+            <li class="{{ activated_menu_about }}"><a href="/about/">O nás</a></li>
+            <li class="dropdown {{ activated_menu_service }}">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                 aria-haspopup="true" aria-expanded="false">Služba <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Chvály</a></li>
-                <li><a href="/service/worship-vision/">Vízia chvál</a></li>
-                <li><a href="/service/dates/">Termíny</a></li>
-                <li><a href="/service/map/">Mapa</a></li>
+                <li class="{{ activated_menu_worship_vision }}"><a href="/service/worship-vision/">Vízia chvál</a></li>
+                <li class="{{ activated_menu_dates }}"><a href="/service/dates/">Termíny</a></li>
+                <li class="{{ activated_menu_map }}"><a href="/service/map/">Mapa</a></li>
               </ul>
             </li>
             <li><a href="#contact">Preklady</a></li>
             <li><a href="#contact">Kontakt</a></li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Podporujeme <span class="caret"></span></a>
+            <li class="dropdown {{ activated_menu_support }}">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                 aria-haspopup="true" aria-expanded="false">Podporujeme <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/support/billings/">Billingsová metóda</a></li>
-                <li><a href="/support/sdm-2016/">SDM 2016 Krakov</a></li>
+                <li class="{{ activated_menu_billings }}"><a href="/support/billings/">Billingsová metóda</a></li>
+                <li class="{{ activated_menu_sdm_2016 }}"><a href="/support/sdm-2016/">SDM 2016 Krakov</a></li>
               </ul>
             </li>
           </ul>
