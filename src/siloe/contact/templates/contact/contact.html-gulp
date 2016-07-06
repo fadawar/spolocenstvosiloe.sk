@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Kontakt{% endblock %}
+
+{% block content %}
+  <h1>Kontakt</h1>
+
+  <h3>Pošlite nám správu:</h3>
+
+  {% if sending %}
+    {% if sending.status %}
+      <div class="alert alert-dismissible alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Výborne!</strong> {{ sending.message }}
+      </div>
+    {% else %}
+      <div class="alert alert-dismissible alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Ejha, vyskytol sa problém!</strong> {{ sending.message }}
+      </div>
+    {% endif %}
+  {% endif %}
+
+
+  <form class="form-horizontal" method="POST" action="{% url 'view_contact' %}">
+  {% csrf_token %}
+  <fieldset>
+    {% for field in form %}
+      <div class="form-group {% if field.errors %}has-error{% endif %}">
+        <label for="{{ field.name }}" class="col-lg-1 col-md-2 control-label">{{ field.label }}</label>
+        <div class="col-lg-11 col-md-10">
+          {{ field }}
+          {% if field.errors %}
+            <span class="help-block">{{ field.errors }}</span>
+          {% endif %}
+          {% if field.help_text %}
+            <span class="help-block">{{ field.help_text }}</span>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-1 col-md-offset-2">
+        <button type="submit" class="btn btn-primary">Odoslať</button>
+      </div>
+    </div>
+  </fieldset>
+</form>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Poštová adresa</h3>
+      <p>
+        Spoločenstvo Siloe<br>
+        Kriváň 193<br>
+        962 04<br>
+        Kriváň<br>
+      </p>
+    </div>
+  </div>
+
+{% endblock %}

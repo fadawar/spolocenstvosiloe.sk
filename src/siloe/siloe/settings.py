@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'taggit',
     'articles',
+    'contact',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -129,3 +130,6 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = '/home/vagrant/media/'
 MEDIA_URL = '/media/'
+
+CONTACT_EMAIL = ''
+MAILGUN_API_KEY = ''

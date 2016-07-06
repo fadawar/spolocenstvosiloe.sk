@@ -19,7 +19,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.views.generic import TemplateView
 
-from articles import views
+from articles import views as articles_views
+from contact import views as contact_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -41,7 +42,8 @@ urlpatterns = [
     url(r'^support/sdm-2016/$', TemplateView.as_view(
         template_name="static_pages/support/sdm-2016.html",
         get_context_data=lambda: {'activated_menu_sdm_2016': 'active', 'activated_menu_support': 'active'})),
-    url(r'^articles/tags/(\d+)/$', views.view_articles_with_tag, name='view_articles_with_tag'),
-    url(r'^articles/(\d+)/$', views.view_article, name='view_article'),
-    url(r'^$', views.home_page, name='home'),
+    url(r'^articles/tags/(\d+)/$', articles_views.view_articles_with_tag, name='view_articles_with_tag'),
+    url(r'^articles/(\d+)/$', articles_views.view_article, name='view_article'),
+    url(r'^contact/$', contact_views.view_contact, name='view_contact'),
+    url(r'^$', articles_views.home_page, name='home'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
