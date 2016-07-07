@@ -25,6 +25,8 @@ django_static_path: "{{ nginx_static_dir_path }}"
 django_debug: "True"
 django_allowed_hosts: "['*', ]"
 django_secret_key: "{{ vault_django_secret_key }}"
+django_email_host_user: "{{ vault_django_email_host_user }}"
+django_email_host_pass: "{{ vault_django_email_host_pass }}"
 
 # SSL
 enable_ssl: no

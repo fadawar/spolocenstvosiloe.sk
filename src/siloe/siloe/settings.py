@@ -125,11 +125,17 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/vagrant/src/static/'
 STATICFILES_DIRS = [
-    "/vagrant/src/siloe/siloe/static/",
+    '/vagrant/src/siloe/siloe/static/',
 ]
 
 MEDIA_ROOT = '/home/vagrant/media/'
 MEDIA_URL = '/media/'
 
-CONTACT_EMAIL = ''
-MAILGUN_API_KEY = ''
+# Email related stuff
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''        # real data is in ansible vault
+EMAIL_HOST_PASSWORD = ''    # real data is in ansible vault
+CONTACT_EMAIL = EMAIL_HOST_USER     # address used in Contact form
