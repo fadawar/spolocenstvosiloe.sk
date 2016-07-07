@@ -1,0 +1,15 @@
+---
+
+- name: Install memcached
+  become: yes
+  become_user: root
+  apt: name={{ item }} update_cache={{ update_apt_cache }} state=latest
+  with_items:
+    - memcached
+    - libmemcached-dev  # for pylibmc
+  tags: packages
+
+- name: Ensure memcached service is running
+  become: yes
+  become_user: root
+  service: name=memcached state=running enabled=yes

@@ -11,3 +11,6 @@
 
 - include: setup_db.yml
   tags: db
+
+- include: setup_memcached.yml
+  tags: cache

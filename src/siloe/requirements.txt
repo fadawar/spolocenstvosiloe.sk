@@ -2,4 +2,5 @@ Django==1.9.7
 django-taggit==0.20.1
 mock==2.0.0
 pbr==1.10.0
+pylibmc==1.5.1
 six==1.10.0
