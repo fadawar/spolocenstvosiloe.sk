@@ -17,13 +17,13 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                  aria-haspopup="true" aria-expanded="false">Služba <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="#">Chvály</a></li>
+                <li><a href="{% url 'view_articles_with_tag_slug' 'chvaly' %}">Chvály</a></li>
                 <li class="{{ activated_menu_worship_vision }}"><a href="/service/worship-vision/">Vízia chvál</a></li>
                 <li class="{{ activated_menu_dates }}"><a href="/service/dates/">Termíny</a></li>
                 <li class="{{ activated_menu_map }}"><a href="/service/map/">Mapa</a></li>
               </ul>
             </li>
-            <li><a href="#contact">Preklady</a></li>
+            <li><a href="{% url 'view_articles_with_tag_slug' 'preklad' %}">Preklady</a></li>
             <li class="{{ activated_menu_contact }}"><a href="{% url 'view_contact' %}">Kontakt</a></li>
             <li class="dropdown {{ activated_menu_support }}">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"

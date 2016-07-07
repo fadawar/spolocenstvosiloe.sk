@@ -98,7 +98,7 @@ class TagsInArticleTest(TestCase):
 
         self.assertContains(response, 'tag1')
 
-    def test_can_filter_articles_via_tags(self):
+    def test_can_filter_articles_via_tags_id(self):
         a1 = Article.objects.create(title="First title")
         a1.tags.add("tag1")
         a1.tags.add("tag2")
@@ -110,6 +110,21 @@ class TagsInArticleTest(TestCase):
         self.assertContains(r1, a2.title)
 
         r2 = self.client.get('/articles/tags/2/')
+        self.assertContains(r2, a1.title)
+        self.assertNotContains(r2, a2.title)
+
+    def test_can_filter_articles_via_tags_slug(self):
+        a1 = Article.objects.create(title="First title")
+        a1.tags.add("tag1")
+        a1.tags.add("tag2")
+        a2 = Article.objects.create(title="Second title")
+        a2.tags.add("tag1")
+
+        r1 = self.client.get("/articles/tags/slug/{}/".format(a1.tags.all()[0].slug))
+        self.assertContains(r1, a1.title)
+        self.assertContains(r1, a2.title)
+
+        r2 = self.client.get("/articles/tags/slug/{}/".format(a1.tags.all()[1].slug))
         self.assertContains(r2, a1.title)
         self.assertNotContains(r2, a2.title)
 
