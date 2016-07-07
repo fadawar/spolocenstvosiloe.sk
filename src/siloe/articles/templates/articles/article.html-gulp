@@ -4,24 +4,40 @@
 
 {% block content %}
   <h1>{{ article.title }}</h1>
-  <div>{{ article.content }}</div>
+  <div class="row">
+    <div class="col-sm-12 margin-top-bottom">
+      <div>{{ article.content }}</div>
+    </div>
 
-  {% if article.videoarticle %}
-    <video width="560" height="315" id="video-{{ article.id }}" controls="controls">
-      <source type="video/youtube" src="{{ article.videoarticle.video_url }}" />
-      <track kind="subtitles" src="{{ MEDIA_URL }}{{ article.videoarticle.subtitles.name }}" srclang="sk" />
-      <p>Your browser leaves much to be desired.</p>
-    </video>
-  {% elif article.servicearticle %}
-    <img src="{{ MEDIA_URL }}{{ article.servicearticle.poster.name }}" alt="Poster">
-    <iframe width="100%" height="60"
-            src="https://www.mixcloud.com/widget/iframe/?feed={{ article.servicearticle.audio_url }}&hide_cover=1&mini=1&hide_artwork=1"
-            frameborder="0">
-    </iframe>
-  {% endif %}
+    {% if article.videoarticle %}
+      <div class="col-sm-12 margin-top-bottom">
+        <video width="560" height="315" id="video-{{ article.id }}" controls="controls">
+          <source type="video/youtube" src="{{ article.videoarticle.video_url }}" />
+          <track kind="subtitles" src="{{ MEDIA_URL }}{{ article.videoarticle.subtitles.name }}" srclang="sk" />
+          <p>Your browser leaves much to be desired.</p>
+        </video>
+      </div>
 
-  {% include "articles/tags.html" %}
-  <div>
-    {% include "articles/comments-disqus.html" %}
+    {% elif article.servicearticle %}
+      <div class="col-sm-12 margin-top-bottom">
+        <a href="{{ MEDIA_URL }}{{ article.servicearticle.poster.name }}" target="_blank">
+          <img src="{{ MEDIA_URL }}{{ article.servicearticle.poster.name }}" class="img-responsive" alt="Poster">
+        </a>
+      </div>
+      <div class="col-sm-12 margin-top-bottom">
+        <iframe width="100%" height="60"
+                src="https://www.mixcloud.com/widget/iframe/?feed={{ article.servicearticle.audio_url }}&hide_cover=1&mini=1&hide_artwork=1"
+                frameborder="0">
+        </iframe>
+      </div>
+    {% endif %}
+
+    <div class="col-sm-12 margin-top-bottom">
+      {% include "articles/tags.html" %}
+    </div>
+    <div class="col-sm-12 margin-top-bottom">
+      {% include "articles/comments-disqus.html" %}
+    </div>
   </div>
+
 {% endblock %}
