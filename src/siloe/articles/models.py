@@ -6,7 +6,12 @@ from taggit.managers import TaggableManager
 class Article(models.Model):
     title = models.CharField(max_length=255, default="")
     content = models.TextField(default="")
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     tags = TaggableManager()
+
+    class Meta:
+        ordering = ['-created']
 
 
 class VideoArticle(Article):

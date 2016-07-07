@@ -5,6 +5,7 @@
     <a href="{% url "view_article" article.id %}">
       <h1>{{ article.title }}</h1>
     </a>
+    <p class="text-muted small">Vytvorené {{ article.created }}</p>
     <p>{{ article.content }}</p>
     {% include "articles/tags.html" %}
   {% endfor %}

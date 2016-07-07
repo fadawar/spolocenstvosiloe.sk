@@ -47,6 +47,17 @@ class HomePageTest(TestCase):
         self.assertContains(response, 'Great title for article')
         self.assertContains(response, 'This is my story')
 
+    def test_order_of_articles(self):
+        a1 = Article.objects.create()
+        a1.save()
+        a2 = Article.objects.create()
+        a2.save()
+
+        response = self.client.get('/')
+
+        self.assertEqual(response.context['articles'][0], a2)
+        self.assertEqual(response.context['articles'][1], a1)
+
 
 class VideoArticleTest(TestCase):
     def test_video_articles_show_every_field(self):
