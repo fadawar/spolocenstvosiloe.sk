@@ -3,11 +3,12 @@
 virtualenv_path: /home/vagrant/venv
 application_path_server: /home/vagrant/application/
 application_path_latest: "{{ application_path_server }}latest/"
-application_path_latest_file: "{{ application_path_server }}latest" # The can not be '/' at the end when creating symbolic link
+application_path_latest_file: "{{ application_path_server }}latest" # Here can not be '/' at the end when creating symbolic link
 
 # Nginx
 nginx_log_path: /vagrant/logs
 nginx_static_dir_path: "{{ application_path_latest }}static/"
+nginx_media_dir_path: "{{ application_path_server }}media/"
 
 # Gunicorn
 gunicorn_user: vagrant
@@ -22,6 +23,7 @@ db_password: "{{ vault_db_password }}"
 
 # Django
 django_static_path: "{{ nginx_static_dir_path }}"
+django_media_root_path: "{{ nginx_media_dir_path }}"
 django_debug: "True"
 django_allowed_hosts: "['*', ]"
 django_secret_key: "{{ vault_django_secret_key }}"

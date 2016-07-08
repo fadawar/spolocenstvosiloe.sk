@@ -8,6 +8,7 @@ application_path_latest_file: "{{ application_path_server }}latest" # There can 
 # Nginx
 nginx_log_path: /app/logs
 nginx_static_dir_path: "{{ application_path_latest }}static/"
+nginx_media_dir_path: "{{ application_path_server }}media/"
 
 # Gunicorn
 gunicorn_user: root
@@ -22,6 +23,7 @@ db_password: "{{ vault_db_password }}"
 
 # Django
 django_static_path: "{{ nginx_static_dir_path }}"
+django_media_root_path: "{{ nginx_media_dir_path }}"
 django_debug: "False"
 django_allowed_hosts: "['spolocenstvosiloe.sk', '185.122.56.160']"
 django_secret_key: "{{ vault_django_secret_key }}"

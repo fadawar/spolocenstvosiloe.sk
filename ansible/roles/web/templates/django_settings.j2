@@ -152,7 +152,7 @@ STATICFILES_DIRS = [
     "{{ django_static_path }}",
 ]
 
-MEDIA_ROOT = '/home/vagrant/media/'
+MEDIA_ROOT = "{{ django_media_root_path }}"
 MEDIA_URL = '/media/'
 
 # Email related stuff
@@ -163,3 +163,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "{{ vault_django_email_host_user }}"        # real data is in ansible vault
 EMAIL_HOST_PASSWORD = "{{ vault_django_email_host_pass }}"    # real data is in ansible vault
 CONTACT_EMAIL = EMAIL_HOST_USER     # address used in Contact form
+
+# Articles
+ARTICLES_PER_PAGE = 10

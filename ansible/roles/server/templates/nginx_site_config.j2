@@ -56,10 +56,10 @@ server {
         alias   {{ nginx_static_dir_path }};
     }
 
-{##}
-{#    location /media/ {#}
-{#        alias   {{ nginx_media_dir }};#}
-{#    }#}
+
+    location /media/ {
+        alias   {{ nginx_media_dir_path }};
+    }
 
     location / {
         if (-f {{ virtualenv_path }}/maintenance_on.html) {
