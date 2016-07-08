@@ -5,6 +5,7 @@ from django.conf import settings
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.core.urlresolvers import resolve
 from django.test import TestCase
+from django.test.utils import override_settings
 
 from articles.models import Article, VideoArticle, ServiceArticle
 from articles.views import home_page
@@ -57,6 +58,18 @@ class HomePageTest(TestCase):
 
         self.assertEqual(response.context['articles'][0], a2)
         self.assertEqual(response.context['articles'][1], a1)
+
+    @override_settings(ARTICLES_PER_PAGE=1)
+    def test_has_pagination(self):
+        a1 = Article.objects.create()
+        a1.save()
+        a2 = Article.objects.create()
+        a2.save()
+
+        response = self.client.get('/')
+
+        self.assertEqual(len(response.context['articles']), 1)
+        self.assertContains(response, 'Ďalej')
 
 
 class VideoArticleTest(TestCase):

@@ -7,6 +7,15 @@
     </a>
     <p class="text-muted small">Vytvorené {{ article.created }}</p>
     <p>{{ article.content }}</p>
+
+    {% if article.servicearticle %}
+      <div class="col-sm-12 margin-top-bottom service-poster">
+        <a href="{{ MEDIA_URL }}{{ article.servicearticle.poster.name }}" target="_blank">
+          <img src="{{ MEDIA_URL }}{{ article.servicearticle.poster.name }}" class="img-responsive" alt="Poster">
+        </a>
+      </div>
+    {% endif %}
+
     {% include "articles/tags.html" %}
   {% empty %}
     <div class="alert alert-dismissible alert-warning">
@@ -15,4 +24,6 @@
       <p>Nebol zverejnený žiaden článok.</p>
     </div>
   {% endfor %}
+
+  {% include "articles/pagination.html" %}
 {% endblock %}

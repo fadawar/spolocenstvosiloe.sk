@@ -159,3 +159,6 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = ''        # real data is in ansible vault
 EMAIL_HOST_PASSWORD = ''    # real data is in ansible vault
 CONTACT_EMAIL = EMAIL_HOST_USER     # address used in Contact form
+
+# Articles
+ARTICLES_PER_PAGE = 10
