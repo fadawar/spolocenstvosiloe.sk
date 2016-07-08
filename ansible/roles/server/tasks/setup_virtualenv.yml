@@ -11,4 +11,4 @@
   pip: name=pip
        virtualenv={{ virtualenv_path }}
        virtualenv_command=pyvenv-3.4
-       virtualenv_python=python3.4
+#       virtualenv_python=python3.4

@@ -14,9 +14,9 @@
 
 - name: Install pip packages
   pip: requirements="{{ application_path_server }}{{ ansible_date_time.iso8601 }}/{{ application_name }}/requirements.txt"
-       executable=pip3.4
        virtualenv={{ virtualenv_path }}
        virtualenv_command=pyvenv-3.4
+       virtualenv_python=python3.4
 
 - name: Create Django settings file
   template: src=django_settings.j2
@@ -31,23 +31,9 @@
     dest: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}"
     mode: 0644
 
-- name: Copy blog files
-  copy:
-    src: "{{ application_sources_dir }}blog/output/"
-    dest: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}/blog/"
-    mode: 0644
-  tags: blog
-
 - name: Run Django migrations
   django_manage:
     command: migrate
-    app_path: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}/{{ application_name }}/"
-    virtualenv: "{{ virtualenv_path }}"
-
-- name: Load Django fixtures
-  django_manage:
-    command: loaddata
-    fixtures: mainapp/fixtures/users.json log_platform/fixtures/tokens.json
     app_path: "{{ application_path_server }}{{ ansible_date_time.iso8601 }}/{{ application_name }}/"
     virtualenv: "{{ virtualenv_path }}"
 
@@ -59,3 +45,4 @@
     mode: 0755
   notify:
     - restart gunicorn
+    - restart nginx

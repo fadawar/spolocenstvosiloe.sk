@@ -12,3 +12,8 @@
   become: yes
   become_user: root
   service: name=nginx state=reloaded
+
+- name: restart postgres
+  become: yes
+  become_user: root
+  service: name=postgresql state=restarted

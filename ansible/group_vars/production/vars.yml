@@ -10,8 +10,8 @@ nginx_log_path: /app/logs
 nginx_static_dir_path: "{{ application_path_latest }}static/"
 
 # Gunicorn
-gunicorn_user: siloe
-gunicorn_group: siloe
+gunicorn_user: root
+gunicorn_group: root
 gunicorn_num_workers: 5
 gunicorn_max_requests: 0
 
@@ -29,4 +29,4 @@ django_email_host_user: "{{ vault_django_email_host_user }}"
 django_email_host_pass: "{{ vault_django_email_host_pass }}"
 
 # SSL
-enable_ssl: yes
+enable_ssl: no

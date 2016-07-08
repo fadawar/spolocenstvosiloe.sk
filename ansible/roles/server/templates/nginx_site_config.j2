@@ -56,17 +56,6 @@ server {
         alias   {{ nginx_static_dir_path }};
     }
 
-    location /.well-known/ {
-        root   /var/www/html/.well-known/;
-    }
-
-    location /blog/ {
-        root   {{ application_path_latest }};
-    }
-
-    location /download/latest/ {
-        return  302 http://sh-releases.cloudapp.net/releases/Setup.exe;
-    }
 {##}
 {#    location /media/ {#}
 {#        alias   {{ nginx_media_dir }};#}

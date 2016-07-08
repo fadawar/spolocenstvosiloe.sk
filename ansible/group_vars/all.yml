@@ -1,6 +1,6 @@
 ---
 
-application_name: spinehero
+application_name: siloe
 application_sources_dir: ../src/
 
 # Nginx

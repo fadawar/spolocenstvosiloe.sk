@@ -3,8 +3,8 @@
   hosts: staging
   remote_user: vagrant
   vars:
-    - update_apt_cache: no
+    - update_apt_cache: yes
   roles:
     - base
     - server
-#    - web
+    - web
