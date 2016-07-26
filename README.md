@@ -25,6 +25,8 @@ We use Ansible. Secret information are encrypted with ansible-vault and password
 be named `.ansible-vault-password.txt`.
 
 #### Provisioning production
+**Warning!** Don't forget to run `python manage.py collectstatic` before deployment to production.
+
 ```ansible-playbook -i ansible/hosts_production ansible/production.yml```
 
 #### Provisioning staging
